@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10120f">
+  <meta name="description" content="Build something that matters at NEXUS, a student hackathon coming in February 2027. Explore categories, prizes, and registration details.">
+  <title>NEXUS 2027 — Make what matters</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f2f1e9;
+      background: #10120f;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      --bg: #10120f;
+      --surface: #181b17;
+      --surface-raised: #1d211c;
+      --line: rgb(236 243 222 / 11%);
+      --muted: #a4a99e;
+      --lime: #d6ff62;
+      --lime-dark: #b7e840;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 74% 14%, rgb(91 117 45 / 13%), transparent 29rem),
+        var(--bg);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid var(--lime);
+      outline-offset: 3px;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    .shell {
+      width: min(1160px, calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 2;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 36px;
+      height: 36px;
+      place-items: center;
+      color: var(--bg);
+      background: var(--lime);
+      border-radius: 11px;
+    }
+
+    .brand-mark svg {
+      width: 21px;
+      height: 21px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 3vw, 36px);
+      color: #c3c6bc;
+      font-size: 13px;
+      font-weight: 550;
+    }
+
+    .nav-links a:hover,
+    .text-link:hover {
+      color: var(--lime);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 18px;
+      color: #151810;
+      background: var(--lime);
+      border: 1px solid var(--lime);
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 760;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--lime-dark);
+    }
+
+    .button svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .nav-cta {
+      min-height: 40px;
+      padding-inline: 15px;
+      font-size: 12px;
+    }
+
+    .hero {
+      min-height: 594px;
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      align-items: center;
+      gap: 38px;
+      padding-block: 74px 83px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 22px;
+      color: var(--lime);
+      font-size: 11px;
+      font-weight: 780;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 21px;
+      height: 1px;
+      content: "";
+      background: var(--lime);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 590px;
+      margin-bottom: 22px;
+      font-size: clamp(58px, 8.5vw, 104px);
+      font-weight: 780;
+      letter-spacing: -0.085em;
+      line-height: 0.91;
+    }
+
+    h1 span {
+      color: var(--lime);
+    }
+
+    .hero-description {
+      max-width: 450px;
+      margin-bottom: 29px;
+      color: #b2b6aa;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #e6e8df;
+      font-size: 13px;
+      font-weight: 650;
+      transition: color 150ms ease;
+    }
+
+    .text-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background:
+        linear-gradient(rgb(255 255 255 / 2%) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 255 255 / 2%) 1px, transparent 1px),
+        radial-gradient(ellipse at 52% 43%, rgb(214 255 98 / 14%), transparent 58%),
+        #151814;
+      background-size: 34px 34px, 34px 34px, auto, auto;
+    }
+
+    .art-label {
+      position: absolute;
+      top: 20px;
+      left: 21px;
+      color: #9da396;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+    }
+
+    .orbital {
+      position: relative;
+      width: min(82%, 350px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+    }
+
+    .orbit {
+      position: absolute;
+      width: 100%;
+      height: 46%;
+      border: 1px solid rgb(214 255 98 / 28%);
+      border-radius: 50%;
+      transform: rotate(-32deg);
+    }
+
+    .orbit:nth-child(2) {
+      transform: rotate(32deg);
+    }
+
+    .orbit:nth-child(3) {
+      width: 64%;
+      height: 100%;
+      transform: rotate(32deg);
+    }
+
+    .core {
+      width: 112px;
+      height: 112px;
+      display: grid;
+      place-items: center;
+      color: #14170e;
+      background: var(--lime);
+      border-radius: 31px;
+      box-shadow: 0 0 90px rgb(214 255 98 / 25%);
+      transform: rotate(-9deg);
+    }
+
+    .core svg {
+      width: 57px;
+      height: 57px;
+      transform: rotate(9deg);
+    }
+
+    .satellite {
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      background: #f4f3e8;
+      border-radius: 50%;
+      box-shadow: 0 0 22px rgb(255 255 255 / 50%);
+    }
+
+    .satellite-one {
+      top: 15%;
+      left: 30%;
+    }
+
+    .satellite-two {
+      right: 12%;
+      bottom: 30%;
+      width: 9px;
+      height: 9px;
+      background: var(--lime);
+    }
+
+    .art-caption {
+      position: absolute;
+      right: 21px;
+      bottom: 18px;
+      color: #c2c7b9;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    .quick-facts {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-block: 1px solid var(--line);
+    }
+
+    .fact {
+      min-height: 116px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 7px;
+      padding: 18px 26px;
+      border-right: 1px solid var(--line);
+    }
+
+    .fact:first-child {
+      padding-left: 0;
+    }
+
+    .fact:last-child {
+      border-right: 0;
+    }
+
+    .fact-label {
+      color: #92988c;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .fact strong {
+      color: #f0f1e9;
+      font-size: 17px;
+      font-weight: 680;
+      letter-spacing: -0.03em;
+    }
+
+    .section {
+      padding-block: 112px;
+    }
+
+    .section-heading {
+      max-width: 630px;
+      margin-bottom: 43px;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: clamp(34px, 5vw, 53px);
+      font-weight: 720;
+      letter-spacing: -0.065em;
+      line-height: 1.04;
+    }
+
+    .section-heading > p:last-child {
+      max-width: 540px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+    }
+
+    .category-card {
+      min-height: 205px;
+      padding: 25px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      border-color: rgb(214 255 98 / 40%);
+    }
+
+    .category-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      margin-bottom: 25px;
+      place-items: center;
+      color: var(--lime);
+      background: rgb(214 255 98 / 9%);
+      border-radius: 9px;
+    }
+
+    .category-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .category-card h3 {
+      margin-bottom: 8px;
+      font-size: 16px;
+      font-weight: 670;
+      letter-spacing: -0.025em;
+    }
+
+    .category-card p {
+      max-width: 290px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .prize-section {
+      position: relative;
+      overflow: hidden;
+      padding-block: 88px;
+      border-block: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse at 50% 130%, rgb(214 255 98 / 10%), transparent 50%),
+        #151814;
+    }
+
+    .prize-section .section-heading {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .prize-section .section-heading > p:last-child {
+      margin-inline: auto;
+    }
+
+    .prize-grid {
+      max-width: 850px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: end;
+      gap: 14px;
+      margin-inline: auto;
+    }
+
+    .prize-card {
+      min-height: 182px;
+      padding: 25px;
+      background: #1c201a;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      text-align: center;
+    }
+
+    .prize-card:first-child {
+      min-height: 210px;
+      border-color: rgb(214 255 98 / 38%);
+      background: linear-gradient(145deg, rgb(214 255 98 / 10%), #1c201a 60%);
+    }
+
+    .prize-place {
+      display: block;
+      margin-bottom: 15px;
+      color: #a4aa9c;
+      font-size: 10px;
+      font-weight: 730;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .prize-card:first-child .prize-place {
+      color: var(--lime);
+    }
+
+    .prize-amount {
+      display: block;
+      margin-bottom: 7px;
+      font-size: clamp(25px, 3.2vw, 38px);
+      font-weight: 760;
+      letter-spacing: -0.06em;
+    }
+
+    .prize-note {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .prize-disclaimer {
+      margin: 22px 0 0;
+      color: #858b7f;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 75px;
+      align-items: start;
+    }
+
+    .timeline {
+      margin-top: 32px;
+      border-top: 1px solid var(--line);
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 126px 1fr;
+      gap: 18px;
+      padding: 19px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-row time {
+      color: var(--lime);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .timeline-row strong {
+      font-size: 13px;
+      font-weight: 630;
+    }
+
+    .timeline-row p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .fee-card {
+      padding: 28px;
+      background:
+        radial-gradient(ellipse at 100% 0%, rgb(214 255 98 / 12%), transparent 50%),
+        var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .fee-card .eyebrow {
+      margin-bottom: 13px;
+    }
+
+    .fee-amount {
+      margin-bottom: 7px;
+      font-size: 45px;
+      font-weight: 760;
+      letter-spacing: -0.07em;
+    }
+
+    .fee-caption {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .fee-points {
+      display: grid;
+      gap: 13px;
+      margin: 0;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .fee-points li {
+      display: flex;
+      align-items: start;
+      gap: 9px;
+      color: #d1d4ca;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .fee-points svg {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 auto;
+      margin-top: 1px;
+      color: var(--lime);
+    }
+
+    .registration-section {
+      padding-block: 99px 112px;
+      border-top: 1px solid var(--line);
+      background: #141713;
+    }
+
+    .registration-layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 70px;
+      align-items: start;
+    }
+
+    .registration-copy {
+      position: sticky;
+      top: 25px;
+    }
+
+    .registration-copy .section-heading {
+      margin-bottom: 25px;
+    }
+
+    .registration-copy .section-heading > p:last-child {
+      max-width: 390px;
+    }
+
+    .demo-note {
+      padding: 14px 15px;
+      color: #c9cdbf;
+      background: rgb(255 255 255 / 3%);
+      border-left: 2px solid var(--lime);
+      font-size: 11px;
+      line-height: 1.65;
+    }
+
+    .registration-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px 14px;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field-full,
+    .fee-total,
+    .consent,
+    .registration-form .button,
+    .form-status {
+      grid-column: 1 / -1;
+    }
+
+    .field label {
+      color: #d9dbd1;
+      font-size: 11px;
+      font-weight: 640;
+    }
+
+    .field input,
+    .field select {
+      width: 100%;
+      height: 46px;
+      padding: 0 12px;
+      color: #f2f1e9;
+      background: #121410;
+      border: 1px solid #343931;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .field input::placeholder {
+      color: #747a6f;
+    }
+
+    .field select {
+      color-scheme: dark;
+    }
+
+    .fee-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 15px 0 2px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+    }
+
+    .fee-total span {
+      color: #b7bcaf;
+    }
+
+    .fee-total strong {
+      color: var(--lime);
+      font-size: 18px;
+    }
+
+    .consent {
+      display: flex;
+      align-items: start;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    .consent input {
+      width: 15px;
+      height: 15px;
+      flex: 0 0 auto;
+      margin: 1px 0 0;
+      accent-color: var(--lime);
+    }
+
+    .registration-form .button {
+      width: 100%;
+      min-height: 49px;
+    }
+
+    .form-status {
+      min-height: 17px;
+      margin: 0;
+      color: var(--lime);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    .site-footer {
+      padding-block: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: #858b7f;
+      font-size: 10px;
+    }
+
+    .footer-brand {
+      color: #d7d9cf;
+      font-weight: 750;
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        min-height: 0;
+        grid-template-columns: 1fr;
+        gap: 42px;
+        padding-block: 70px;
+      }
+
+      .hero-copy {
+        max-width: 650px;
+      }
+
+      .hero-art {
+        min-height: 340px;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr 0.8fr;
+        gap: 38px;
+      }
+
+      .registration-layout {
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 35px;
+      }
+
+      .registration-form {
+        padding: 22px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        width: min(100% - 36px, 500px);
+      }
+
+      .nav {
+        min-height: 70px;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding-block: 13px;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+        font-size: 11px;
+      }
+
+      .nav-cta {
+        min-height: 36px;
+        padding-inline: 11px;
+        font-size: 11px;
+      }
+
+      .hero {
+        gap: 31px;
+        padding-block: 57px 49px;
+      }
+
+      h1 {
+        font-size: clamp(59px, 17vw, 82px);
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-art {
+        min-height: 275px;
+      }
+
+      .core {
+        width: 88px;
+        height: 88px;
+        border-radius: 25px;
+      }
+
+      .core svg {
+        width: 47px;
+        height: 47px;
+      }
+
+      .quick-facts {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .fact {
+        min-height: 91px;
+        padding: 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .fact:first-child {
+        padding-left: 16px;
+      }
+
+      .fact:nth-child(2) {
+        border-right: 0;
+      }
+
+      .fact:nth-child(n + 3) {
+        border-bottom: 0;
+      }
+
+      .fact strong {
+        font-size: 15px;
+      }
+
+      .section {
+        padding-block: 76px;
+      }
+
+      .section-heading {
+        margin-bottom: 30px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .category-card {
+        min-height: 185px;
+        padding: 18px;
+      }
+
+      .category-icon {
+        margin-bottom: 18px;
+      }
+
+      .prize-section {
+        padding-block: 74px;
+      }
+
+      .prize-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .prize-card,
+      .prize-card:first-child {
+        min-height: 0;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 4px 14px;
+        padding: 19px;
+        text-align: left;
+      }
+
+      .prize-place {
+        grid-column: 1;
+        grid-row: 1;
+        margin: 0;
+      }
+
+      .prize-amount {
+        grid-column: 2;
+        grid-row: 1 / 3;
+        margin: 0;
+        font-size: 25px;
+      }
+
+      .prize-note {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .details-grid,
+      .registration-layout {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .registration-copy {
+        position: static;
+      }
+
+      .registration-section {
+        padding-block: 75px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .category-grid,
+      .registration-form {
+        grid-template-columns: 1fr;
+      }
+
+      .field-full,
+      .fee-total,
+      .consent,
+      .registration-form .button,
+      .form-status {
+        grid-column: auto;
+      }
+
+      .registration-form .field:nth-child(1),
+      .registration-form .field:nth-child(2),
+      .registration-form .field:nth-child(3) {
+        grid-column: 1;
+      }
+
+      .timeline-row {
+        grid-template-columns: 105px 1fr;
+      }
+
+      .footer-inner {
+        align-items: start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="NEXUS Hackathon home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M5 19V5l14 14V5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>NEXUS <span style="color: var(--lime)">2027</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">The event</a>
+        <a href="#categories">Tracks</a>
+        <a href="#prizes">Prizes</a>
+        <a href="#details">Details</a>
+      </div>
+      <a class="button nav-cta" href="#register">Register your team</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell" id="home" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A student innovation sprint · February 2027</p>
+        <h1 id="hero-title">Make<br>what <span>matters.</span></h1>
+        <p class="hero-description">One big idea. A team that believes in it. Build a project with real-world potential at NEXUS, an open invitation to create, experiment, and make your next idea happen.</p>
+        <div class="hero-actions">
+          <a class="button" href="#register">
+            Save your spot
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="text-link" href="#about">Discover the event <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Abstract orbital illustration representing ideas coming together">
+        <span class="art-label">IDEAS IN ORBIT / 01</span>
+        <div class="orbital" aria-hidden="true">
+          <span class="orbit"></span>
+          <span class="orbit"></span>
+          <span class="orbit"></span>
+          <span class="satellite satellite-one"></span>
+          <span class="satellite satellite-two"></span>
+          <span class="core">
+            <svg viewBox="0 0 64 64" fill="none">
+              <path d="M32 9 37.7 25.2 54 31 37.7 36.8 32 53 26.3 36.8 10 31 26.3 25.2 32 9Z" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+              <circle cx="32" cy="31" r="4" fill="currentColor"/>
+            </svg>
+          </span>
+        </div>
+        <span class="art-caption">THINK IT. BUILD IT. SHARE IT.</span>
+      </div>
+    </section>
+
+    <section class="quick-facts shell" aria-label="Event highlights">
+      <div class="fact"><span class="fact-label">When</span><strong>February 2027</strong></div>
+      <div class="fact"><span class="fact-label">Team size</span><strong>2–4 people</strong></div>
+      <div class="fact"><span class="fact-label">Registration</span><strong>₹499 / person</strong></div>
+      <div class="fact"><span class="fact-label">Prize pool</span><strong>₹85,000*</strong></div>
+    </section>
+
+    <section class="section shell" id="about" aria-labelledby="about-title">
+      <div class="section-heading">
+        <p class="eyebrow">The event</p>
+        <h2 id="about-title">A weekend for ideas<br>that move things forward.</h2>
+        <p>NEXUS brings curious students together to turn bold thinking into working prototypes. Pick a problem, find your people, and build something worth sharing.</p>
+      </div>
+      <div class="category-grid" id="categories">
+        <article class="category-card">
+          <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 4 7v5c0 5 3.4 8 8 9 4.6-1 8-4 8-9V7l-8-4Zm-3 9 2 2 4-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Climate &amp; sustainability</h3>
+          <p>Rethink energy, waste, and how we care for the world around us.</p>
+        </article>
+        <article class="category-card">
+          <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12M9 9h6v6H9z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>AI &amp; machine learning</h3>
+          <p>Put intelligent, responsible technology to work on real needs.</p>
+        </article>
+        <article class="category-card">
+          <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5m0 14h16M8 15v-4m4 4V7m4 8v-6m4 6V9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Fintech &amp; inclusion</h3>
+          <p>Make financial tools simpler, fairer, and more accessible.</p>
+        </article>
+        <article class="category-card">
+          <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-8-4.4-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.6-8 11-8 11Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 12h2l1-2 2 4 1-2h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Health &amp; wellbeing</h3>
+          <p>Explore thoughtful ways to support healthier people and communities.</p>
+        </article>
+        <article class="category-card">
+          <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8h16M4 16h16M8 4v16m8-16v16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+          <h3>Education &amp; access</h3>
+          <p>Open new doors to learning, skills, and opportunity for everyone.</p>
+        </article>
+        <article class="category-card">
+          <span class="category-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-1.9-5.8L4 11l6.1-2.2L12 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m19 16 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z" fill="currentColor"/></svg></span>
+          <h3>Open innovation</h3>
+          <p>Have another idea? Bring it—we're excited to see what you imagine.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="prize-section" id="prizes" aria-labelledby="prize-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="eyebrow">The rewards</p>
+          <h2 id="prize-title">Great ideas deserve<br>a great launch.</h2>
+          <p>Build with purpose, present your prototype, and compete for prizes that can help your idea go further.</p>
+        </div>
+        <div class="prize-grid">
+          <article class="prize-card">
+            <span class="prize-place">1st place · Winning team</span>
+            <strong class="prize-amount">₹50,000</strong>
+            <span class="prize-note">Grand prize</span>
+          </article>
+          <article class="prize-card">
+            <span class="prize-place">2nd place · Runner-up</span>
+            <strong class="prize-amount">₹25,000</strong>
+            <span class="prize-note">Second prize</span>
+          </article>
+          <article class="prize-card">
+            <span class="prize-place">3rd place · Finalist</span>
+            <strong class="prize-amount">₹10,000</strong>
+            <span class="prize-note">Third prize</span>
+          </article>
+        </div>
+        <p class="prize-disclaimer">*Sample prize amounts for this event page. Final prize details are subject to organizer confirmation.</p>
+      </div>
+    </section>
+
+    <section class="section shell" id="details" aria-labelledby="details-title">
+      <div class="details-grid">
+        <div>
+          <div class="section-heading">
+            <p class="eyebrow">Plan your build</p>
+            <h2 id="details-title">A clear path from idea to demo.</h2>
+            <p>Get your team together now. The exact schedule and venue will be shared by the organizers closer to the event.</p>
+          </div>
+          <div class="timeline" aria-label="Event schedule">
+            <div class="timeline-row">
+              <time>Before the event</time>
+              <div><strong>Team up &amp; register</strong><p>Choose your team, share your project track, and reserve your place.</p></div>
+            </div>
+            <div class="timeline-row">
+              <time>February 2027</time>
+              <div><strong>Build &amp; collaborate</strong><p>Bring your idea to life with your team and fellow student innovators.</p></div>
+            </div>
+            <div class="timeline-row">
+              <time>Final showcase</time>
+              <div><strong>Demo your project</strong><p>Present your prototype to the judges and celebrate the ideas built together.</p></div>
+            </div>
+          </div>
+        </div>
+        <aside class="fee-card" aria-label="Registration fee details">
+          <p class="eyebrow">Your registration</p>
+          <p class="fee-amount">₹499</p>
+          <p class="fee-caption">per participant · estimated fee</p>
+          <ul class="fee-points">
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Open to student teams of 2–4</li>
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Choose one project category</li>
+            <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>No payment is collected on this page</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="registration-section" id="register" aria-labelledby="register-title">
+      <div class="registration-layout shell">
+        <div class="registration-copy">
+          <div class="section-heading">
+            <p class="eyebrow">Get involved</p>
+            <h2 id="register-title">Bring your team. Bring your idea.</h2>
+            <p>Share your team's details and select a track. The estimate updates with your team size.</p>
+          </div>
+          <p class="demo-note">Registration form preview: submitting won't send or save your details, and no payment is processed. Connect an event registration service before accepting real entries.</p>
+        </div>
+
+        <form class="registration-form" id="registration-form">
+          <div class="field">
+            <label for="team-name">Team name</label>
+            <input id="team-name" name="team-name" type="text" placeholder="e.g. Bright Sparks" autocomplete="organization" required>
+          </div>
+          <div class="field">
+            <label for="team-size">Team size</label>
+            <select id="team-size" name="team-size" required>
+              <option value="2">2 people</option>
+              <option value="3">3 people</option>
+              <option value="4">4 people</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="captain-name">Team captain</label>
+            <input id="captain-name" name="captain-name" type="text" placeholder="Your full name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="field field-full">
+            <label for="institution">College / institution</label>
+            <input id="institution" name="institution" type="text" placeholder="Your institution name" autocomplete="organization" required>
+          </div>
+          <div class="field field-full">
+            <label for="category">Project category</label>
+            <select id="category" name="category" required>
+              <option value="" disabled selected>Select a project track</option>
+              <option>Climate &amp; sustainability</option>
+              <option>AI &amp; machine learning</option>
+              <option>Fintech &amp; inclusion</option>
+              <option>Health &amp; wellbeing</option>
+              <option>Education &amp; access</option>
+              <option>Open innovation</option>
+            </select>
+          </div>
+          <div class="fee-total" aria-live="polite">
+            <span>Estimated team registration fee <small>(₹499 × <span id="fee-people">2</span> people)</small></span>
+            <strong id="fee-total">₹998</strong>
+          </div>
+          <label class="consent">
+            <input name="confirm-details" type="checkbox" required>
+            <span>I confirm these details are correct and understand this form is a demo—not an active registration or payment.</span>
+          </label>
+          <button class="button" type="submit">Preview registration</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner shell">
+      <a class="footer-brand" href="#home">NEXUS 2027</a>
+      <span>Make what matters. February 2027.</span>
+      <span>Event details and amounts are sample estimates.</span>
+    </div>
+  </footer>
+
+  <script>
+    const registrationForm = document.getElementById("registration-form");
+    const teamSizeInput = document.getElementById("team-size");
+    const feePeople = document.getElementById("fee-people");
+    const feeTotal = document.getElementById("fee-total");
+    const formStatus = document.getElementById("form-status");
+    const feePerPerson = 499;
+
+    teamSizeInput.addEventListener("change", () => {
+      const teamSize = Number(teamSizeInput.value);
+      feePeople.textContent = String(teamSize);
+      feeTotal.textContent = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0
+      }).format(teamSize * feePerPerson);
+    });
+
+    registrationForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      formStatus.textContent = "Demo only: your details were not sent or saved. The estimated team fee is " + feeTotal.textContent + ".";
+    });
+  </script>
+</body>
+</html>
